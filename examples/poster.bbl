@@ -1,0 +1,132 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{kim2025comprehensive}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=3bfea0ff2b76bd307172cf8af69c282e}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Jongseon},
+           giveni={J\bibinitperiod}}}%
+        {{hash=68b60fbc74aa71584b89ffc530bb2244}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Hyungjoon},
+           giveni={H\bibinitperiod}}}%
+        {{hash=00d0a77d8b12b78d0ac5ff04852dc460}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={HyunGi},
+           giveni={H\bibinitperiod}}}%
+        {{hash=238215d15f303b6abaace51b9c86c70b}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Dongjun},
+           giveni={D\bibinitperiod}}}%
+        {{hash=f5ccf882c39a05e689c6de47c0e30a56}{%
+           family={Yoon},
+           familyi={Y\bibinitperiod},
+           given={Sungroh},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{506872bceb8520d81ced92bc517792fa}
+      \strng{fullhash}{8780b5536d882f660612b698bfedf4e3}
+      \strng{fullhashraw}{8780b5536d882f660612b698bfedf4e3}
+      \strng{bibnamehash}{8780b5536d882f660612b698bfedf4e3}
+      \strng{authorbibnamehash}{8780b5536d882f660612b698bfedf4e3}
+      \strng{authornamehash}{506872bceb8520d81ced92bc517792fa}
+      \strng{authorfullhash}{8780b5536d882f660612b698bfedf4e3}
+      \strng{authorfullhashraw}{8780b5536d882f660612b698bfedf4e3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Artificial Intelligence Review}
+      \field{number}{7}
+      \field{title}{A Comprehensive Survey of Deep Learning for Time Series Forecasting: Architectural Diversity and Open Challenges}
+      \field{volume}{58}
+      \field{year}{2025}
+      \verb{doi}
+      \verb 10.1007/s10462-025-11223-9
+      \endverb
+    \endentry
+    \entry{wu2024spatio}{inproceedings}{}{}
+      \name{author}{5}{}{%
+        {{hash=9ec1d35ff9048459d8d4b29365fe0508}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Cheng},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c8cf19241225247d6d07dbf8a516b8ed}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=2d87004b9f3bd5133453797661979d26}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xia},
+           giveni={X\bibinitperiod}}}%
+        {{hash=1172a5ab3e1ac990883d9527eb352792}{%
+           family={Fang},
+           familyi={F\bibinitperiod},
+           given={Zhi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=a2c383d5bb68d735356592e3eefce2f2}{%
+           family={Bu},
+           familyi={B\bibinitperiod},
+           given={Jiajun},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{f59cad10d0798074e0b9af00bb0a8ec5}
+      \strng{fullhash}{d5ec4d1f3bea038df608591315f51629}
+      \strng{fullhashraw}{d5ec4d1f3bea038df608591315f51629}
+      \strng{bibnamehash}{d5ec4d1f3bea038df608591315f51629}
+      \strng{authorbibnamehash}{d5ec4d1f3bea038df608591315f51629}
+      \strng{authornamehash}{f59cad10d0798074e0b9af00bb0a8ec5}
+      \strng{authorfullhash}{d5ec4d1f3bea038df608591315f51629}
+      \strng{authorfullhashraw}{d5ec4d1f3bea038df608591315f51629}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 32nd ACM International Conference on Multimedia (MM '24)}
+      \field{title}{Spatio-Temporal Heterogeneous Federated Learning for Time Series Classification with Multi-View Orthogonal Training}
+      \field{year}{2024}
+      \field{pages}{2613\bibrangedash 2622}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/3581783.3612267
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

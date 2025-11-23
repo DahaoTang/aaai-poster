@@ -8,7 +8,7 @@
 % \def\input@path{{usyd-beamer-theme/}}
 \makeatother
 
-\usepackage[orientation=portrait,size=a1,scale=1.5,debug]{beamerposter}
+\usepackage[orientation=portrait,size=a0,scale=1.0,debug]{beamerposter}
 \usepackage[utf8]{inputenc}
 \usepackage[australian]{babel}
 \usepackage{amsmath}
@@ -20,7 +20,7 @@
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 \renewcommand*{\bibfont}{\small}
 
-\addbibresource{examples/references.bib}
+\addbibresource{references.bib}
 
 \mode<presentation>{\usetheme{usyd-poster}}
 
@@ -32,7 +32,7 @@
   \leavevmode%
   \begin{beamercolorbox}[ht=7ex,leftskip=1em,rightskip=1em]{author in head/foot}%
     \hfill
-    \small\texttt{mram5995@uni.sydney.edu.au}\hspace{2em}
+    \small\texttt{dahao.tang@sydney.edu.au}\hspace{2em}
     \vskip1ex
   \end{beamercolorbox}
   \vskip0pt%
@@ -42,9 +42,19 @@
 % Use the below line instead when usyd-beamer-theme is a submodule
 % \graphicspath{{figures/}{usyd-beamer-theme/}}
 
-\title{The Detection and Characterisation of \\\vspace{0.3em} Molecular Crystals using Machine Learning}
-\author{Malcolm Ramsay}
-\institute{School of Chemistry, The University of Sydney}
+\title{Optimal Look-back Horizon for Time Series Forecasting \\\vspace{0.3em} in Federated Learning}
+\author{
+  Dahao Tang\textsuperscript{\rm 1},
+  Nan Yang\textsuperscript{\rm 1},
+  Yanli Li\textsuperscript{\rm 1},
+  Zhiyu Zhu\textsuperscript{\rm 2},
+  Zhibo Jin\textsuperscript{\rm 2},
+  Dong Yuan\textsuperscript{\rm 1}
+}
+\institute{
+  \textsuperscript{\rm 1}The University of Sydney, 
+  \textsuperscript{\rm 2}The University of Technology Sydney
+}
 
 
 \begin{document}
@@ -54,118 +64,273 @@
     \begin{column}{0.47\linewidth}
 
       \begin{block}{Abstract}
-        The wide range of crystal structures of a molecular crystal
-        can make it difficult to detect and characterise each of them individually.
-        Presented, is a general approach to the detection and characterisation
-        of local crystalline order using machine learning.
-        This approach is able to categorise different crystalline orderings and the liquid phase
-        with an accuracy in excess of 95\% over a wide temperature range.
+       Selecting an appropriate look-back horizon remains a fundamental challenge in time series forecasting (TSF), particularly in the federated learning scenarios where data is decentralized, heterogeneous, and often non-independent. While recent work has explored horizon selection by preserving forecasting-relevant information in an intrinsic space, these approaches are primarily restricted to centralized and independently distributed settings. This paper presents a principled framework for adaptive horizon selection in federated time series forecasting through an intrinsic space formulation. We introduce a synthetic data generator (SDG) that captures essential temporal structures in client data, including autoregressive dependencies, seasonality, and trend, while incorporating client-specific heterogeneity. Building on this model, we define a transformation that maps time series windows into an intrinsic representation space with well-defined geometric and statistical properties. We then derive a decomposition of the forecasting loss into a Bayesian term, which reflects irreducible uncertainty, and an approximation term, which accounts for finite-sample effects and limited model capacity. Our analysis shows that while increasing the look-back horizon improves the identifiability of deterministic patterns, it also increases approximation error due to higher model complexity and reduced sample efficiency. We prove that the total forecasting loss is minimized at the smallest horizon where the irreducible loss starts to saturate, while the approximation loss continues to rise. This work provides a rigorous theoretical foundation for adaptive horizon selection for time series forecasting in federated learning. 
       \end{block}
+
+    %   \begin{block}{Introduction}
+    %     The molecule we are studying has three distinct crystal structures
+    %     with potential energies all within 2\% of each other.
+    %     \begin{figure}[h]
+    %       \centering
+    %       \begin{subfigure}[t]{0.3\linewidth}
+    %           \includegraphics[width=\linewidth]{trimer-crys-pg}
+    %         \caption{pg}
+    %         \label{fig:crystals pg}
+    %       \end{subfigure}
+    %       \begin{subfigure}[t]{0.3\linewidth}
+    %           \includegraphics[width=\linewidth]{trimer-crys-p2}
+    %         \caption{p2}
+    %         \label{fig:crystals p2}
+    %       \end{subfigure}
+    %       \begin{subfigure}[t]{0.3\linewidth}
+    %           \includegraphics[width=\linewidth]{trimer-crys-p2gg}
+    %         \caption{p2gg}
+    %         \label{fig:crystals p2gg}
+    %       \end{subfigure}
+    %       \caption{The three lowest energy structures of the Trimer molecule.}
+    %       \label{fig:crystals}
+    %     \end{figure}
+    %     A complete understanding of the liquid--solid phase transition requires
+    %     the detection and characterisation of all crystal structures.
+    %     The diversity of structure required metrics and parameters tailored for each structure.
+
+    %   \end{block}
+
+    % \begin{block}{Machine Learning Methodology}
+
+    %   There has recently been work using machine learning to
+    %   categorize fcc and bcc crystal structures~\autocite{Reinhart2017,Dietz2017} for single atom
+    %   potentials.
+    %   No comparable work was found for molecular crystals.
+    %   The relative orientation of neighbouring molecules was chosen as the feature
+    %   to distinguish crystal structures over a range of temperatures.
+
+    %   \begin{figure}[h]
+    %     \centering
+    %     \includegraphics[width=0.6\linewidth]{orientations}
+    %     \caption{The features of a molecule (in red) are the relative orientations of the nearest
+    %     neighbours (grey).}
+    %     \label{fig:orientations}
+    %   \end{figure}
+
+    %   Machine learning algorithms from the scikit-learn~\autocite{scikit-learn} library
+    %   were used for classification.
+    %   The K-nearest neighbours algorithm gave the best results for this work.
+
+    % \end{block}
+
+    % \begin{block}{References}
+    %   \printbibliography
+    % \end{block}
 
       \begin{block}{Introduction}
-        The molecule we are studying has three distinct crystal structures
-        with potential energies all within 2\% of each other.
-        \begin{figure}[h]
-          \centering
-          \begin{subfigure}[t]{0.3\linewidth}
-              \includegraphics[width=\linewidth]{trimer-crys-pg}
-            \caption{pg}
-            \label{fig:crystals pg}
-          \end{subfigure}
-          \begin{subfigure}[t]{0.3\linewidth}
-              \includegraphics[width=\linewidth]{trimer-crys-p2}
-            \caption{p2}
-            \label{fig:crystals p2}
-          \end{subfigure}
-          \begin{subfigure}[t]{0.3\linewidth}
-              \includegraphics[width=\linewidth]{trimer-crys-p2gg}
-            \caption{p2gg}
-            \label{fig:crystals p2gg}
-          \end{subfigure}
-          \caption{The three lowest energy structures of the Trimer molecule.}
-          \label{fig:crystals}
+        Selecting the right look-back horizon is critical for time series forecasting, yet existing scaling-law insights assume centralized, IID data and fail under the heterogeneity of federated learning. In decentralized settings, clients differ in dynamics, noise, and sequence structure, making a fixed global horizon suboptimal. We introduce a principled framework that uses a structured Synthetic Data Generator to capture shared temporal patterns and client-specific variability. By mapping windows into an intrinsic representation space, we derive a clean Bayesian + approximation error decomposition and show that each client’s optimal horizon is the smallest length where Bayesian error saturates. Our contributions include the following:
+        \begin{itemize}
+          \item A geometry-preserving intrinsic space for heterogeneous multivariate series.
+          \item A tight decomposition linking horizon length to Bayesian and approximation errors.
+          \item A proof that forecasting loss is unimodal in horizon size, yielding a client-adaptive optimal horizon criterion.
+        \end{itemize}
+        
+      \end{block}
+
+      \begin{block}{Synthetic Data Generator (SDG)}
+        \begin{figure}[t]
+        \centering
+        \includegraphics[width=0.9\columnwidth]{real_vs_synthetic_smoothed.pdf} 
+        \caption{Comparison between real-world data and data generated by the SDG. The close alignment indicates that the SDG effectively captures the patterns present in real data.}
+        \label{fig1}
         \end{figure}
-        A complete understanding of the liquid--solid phase transition requires
-        the detection and characterisation of all crystal structures.
-        The diversity of structure required metrics and parameters tailored for each structure.
+        A Synthetic Data Generator (SDG) is a parametric model designed to simulate univariate time series data, which often exhibits structural patterns characterized by seasonality, temporal dependence (AR memory), and trend \cite{kim2025comprehensive}. For a given client $k$, feature $f$, and time step $t$, the synthetic observation $\hat{x}_{f,t,k}$ is defined as:
+        \begin{equation}
+        \label{eq:sdg}
+            \begin{split}
+                \hat{x}_{f,t,k} 
+                    &= \text{Seasonal}(A_{f,j,k}, T_{f,j,k}, \Theta_{f,j,k}) + \text{AR}_{p,k}(\phi_k) \\
+                    & \quad + \text{Trend}(\beta_{f,k}) + \epsilon_{f,t,k} \\
+                    &= \sum_{j=1}^{J} A_{f,j,k} \cdot \sin \left( \frac{2 \pi t}{T_{f,j,k}} + \theta_{f,j,k} \right) \\
+                    & \quad + \sum_{i=1}^{p} \phi_{k,i} \ x_{f,t-i,k} + \beta_{f,k} \ t + \epsilon_{f,t,k}.
+            \end{split}
+        \end{equation}
+
+        We also provide empirical studies to demonstrate the validity of the SDG, as illustrated in Figure \ref{fig1}. Please refer to the Extended Version for more details.
 
       \end{block}
 
-    \begin{block}{Machine Learning Methodology}
+      \begin{block}{Feature Skewness Formulation}
+        In the federated learning scenario, each client tends to observe a different distribution of the same features in time series data, simulating feature skew \cite{wu2024spatio}. We apply a customized skewness partitioning method to create feature heterogeneity:
+        \begin{equation}
+            x_{f,t,k} = \Lambda_{f,k} \tilde{x}_{f,t,k} + \delta_{f,k}
+        \end{equation}
+        where $\Lambda_{fk}$ is the linear scale, which controls how the variance of the feature $f$, $\sigma_f^2$, changes for client $k$; $\delta_{fk}$ is the mean shift, which changes the mean of the feature $f$, $\mu_f$, for the client $k$.
+      \end{block}
 
-      There has recently been work using machine learning to
-      categorize fcc and bcc crystal structures~\autocite{Reinhart2017,Dietz2017} for single atom
-      potentials.
-      No comparable work was found for molecular crystals.
-      The relative orientation of neighbouring molecules was chosen as the feature
-      to distinguish crystal structures over a range of temperatures.
+      \begin{block}{Intrinsic Space Construction}
+        At a high level, we construct a geometry-aware representation space that captures the essential temporal structure of non-IID time series through a transformation grounded in the SDG, which explicitly models autoregressive dependencies, seasonal cycles, and linear trends, and serves as a unifying scaffold for both analytical reasoning and empirical evaluation across heterogeneous clients.
 
-      \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.6\linewidth]{orientations}
-        \caption{The features of a molecule (in red) are the relative orientations of the nearest
-        neighbours (grey).}
-        \label{fig:orientations}
-      \end{figure}
+        The transformation pipeline proceeds in five steps: (1) \emph{Client-wise normalization} to remove affine feature skew and align marginal distributions; (2) \emph{Window flattening} to convert each normalized time-series segment into a fixed-length vector; (3) \emph{Global covariance estimation and eigendecomposition} to identify dominant axes of variation; (4) \emph{Intrinsic dimension estimation} based on the SDG and empirical spectrum; and (5) \emph{Projection into intrinsic space} via principal components. Specifically, the intrinsic dimension for client $k$ is approximated as:
+        \begin{equation}
+          d_{I,k}(H) \approx F \cdot \left( \min\{H, \ell_{\mathrm{AR},k}\} + g_k(H) + 1 \right).
+        \end{equation}
 
-      Machine learning algorithms from the scikit-learn~\autocite{scikit-learn} library
-      were used for classification.
-      The K-nearest neighbours algorithm gave the best results for this work.
+        Here, $\ell_{\mathrm{AR},k}$ denotes the effective AR memory:
+        \begin{equation}
+        \label{eq:l_ar}
+            \ell_{\mathrm{AR}, k} = \left\lceil \frac{\ln(1 / (1 - \epsilon))}{- \ln \rho_k} \right\rceil, \ \epsilon\in(0,1)
+        \end{equation}
+        where $\rho_k \in (0,1)$ is the spectral radius of the AR companion matrix. $g_k(H)$ reflects the resolved seasonal complexity.
+        % \begin{equation}
+        %     g_k(H) = 2 \sum_{j=1}^{J} w_{j,k} \cdot \min \left(1, \frac{H}{T_{j,k}^*} \right),
+        % \end{equation}
+        % \begin{equation}
+        %     w_{j,k} = \frac{\sum_{f=1}^{F} A_{f,j,k}^{2}}{\sum_{f=1}^{F}\sum_{j=1}^{J} A_{f,j,k}^{2}}.
+        % \end{equation}
 
-    \end{block}
-
-    \begin{block}{References}
-      \printbibliography
-    \end{block}
+      \end{block}
 
     \end{column}
+
     \begin{column}{0.47\linewidth}
-      \begin{block}{Results}
-        A single classification algorithm can be used to monitor melting of all crystals
-        with minimal classification errors or noise from thermal fluctuations.
+      % \begin{block}{Results}
+      %   A single classification algorithm can be used to monitor melting of all crystals
+      %   with minimal classification errors or noise from thermal fluctuations.
 
-        \begin{figure}[h]
-          \centering
-          \begin{subfigure}[t]{\linewidth}
-            \centering
-              \includegraphics[width=\linewidth]{trimer-cat-pg}
-            \caption{pg}
-            \label{fig:categorised pg}
-          \end{subfigure}
-          \begin{subfigure}[t]{\linewidth}
-            \centering
-              \includegraphics[width=\linewidth]{trimer-cat-p2}
-            \caption{p2}
-            \label{fig:categorised p2}
-          \end{subfigure}
-          \begin{subfigure}[t]{\linewidth}
-            \centering
-              \includegraphics[width=\linewidth]{trimer-cat-p2gg}
-            \caption{p2gg}
-            \label{fig:categorised p2gg}
-          \end{subfigure}
-          \caption{Each of the crystal structures characterised using the same
-            machine learning algorithm. Regions classified as crystalline are darker
-            than those classifies as liquid.}
-          \label{fig:categorised}
-        \end{figure}
+      %   \begin{figure}[h]
+      %     \centering
+      %     \begin{subfigure}[t]{\linewidth}
+      %       \centering
+      %         \includegraphics[width=\linewidth]{trimer-cat-pg}
+      %       \caption{pg}
+      %       \label{fig:categorised pg}
+      %     \end{subfigure}
+      %     \begin{subfigure}[t]{\linewidth}
+      %       \centering
+      %         \includegraphics[width=\linewidth]{trimer-cat-p2}
+      %       \caption{p2}
+      %       \label{fig:categorised p2}
+      %     \end{subfigure}
+      %     \begin{subfigure}[t]{\linewidth}
+      %       \centering
+      %         \includegraphics[width=\linewidth]{trimer-cat-p2gg}
+      %       \caption{p2gg}
+      %       \label{fig:categorised p2gg}
+      %     \end{subfigure}
+      %     \caption{Each of the crystal structures characterised using the same
+      %       machine learning algorithm. Regions classified as crystalline are darker
+      %       than those classifies as liquid.}
+      %     \label{fig:categorised}
+      %   \end{figure}
 
-        Note that most of the single molecules classified as crystalline in the liquid
-        have a local environment that matches one of the crystals.
+      %   Note that most of the single molecules classified as crystalline in the liquid
+      %   have a local environment that matches one of the crystals.
+
+      % \end{block}
+
+      % \begin{block}{Future Work}
+      %   This work could easily be extend to a wide range of crystal structures
+      %   using the relative orientations, a scaled distance, and angle to neighbours.
+      %   This extension requires finding the crystal structures of a number of 3D molecules
+      %   to generate the training data.\\
+
+      %   Further work would incorporate this functionality into a simple to use open source library
+      %   so that this can become a standard analysis tool for many types of crystals.
+
+      % % Hack to align bottoms of columns
+      % \vspace{0.75em}
+      % \end{block}
+
+      \begin{block}{Loss Decomposition}
+
+        We now formalize this precise decomposition of the prediction loss in the federated setting, showing how the Bayesian and approximation components arise directly from the client-specific data-generating distributions and the server-side evaluation protocol.
+
+        \begin{theorem}[Federated Loss Decomposition]
+          \label{thm:federated_loss_decomposition}
+
+          For each client $k \in \{1,\dots,K\}$, let $(U_k, V_k)$ denote its data-generating pair, where $U_k$ takes values in a measurable input space $\mathcal{M}(H)$ and $V_k$ in an output space $\mathcal{M}(S)$, both embedded in a real Hilbert space $(\mathcal{H},\|\cdot\|)$ with the associated Borel $\sigma$-algebras. 
+
+          Let $m_k^*(u) := \mathbb{E}[\ V_k \mid U_k = u\ ]$ be the client-specific Bayesian predictor, defined $P_{U_k}$–almost everywhere. For any measurable, square-integrable predictor $m : \mathcal{M}(H) \to \mathcal{M}(S)$, the server's global predictive loss is
+          \begin{equation}
+              L(H,S;m) := \mathbb{E}_{k\sim\pi}\Big[ \mathbb{E} \big[\ \|\ V_k - m(U_k)\ \|^2 \big] \Big]
+          \end{equation}
+          where $\pi=(\pi_1,\dots,\pi_K)$ is any distribution over clients and the inner expectation is over $(U_k, V_k)$ under client $k$'s distribution.
+          Then the loss decomposes as: 
+          \begin{equation}
+              L(H,S;m) = L_{\mathrm{Bayes}}(H,S) + L_{\mathrm{approx}}(H,S;m),
+          \end{equation}
+          where the federated Bayesian loss is
+          \begin{equation}
+              L_{\mathrm{Bayes}}(H,S) := \mathbb{E}_{k\sim\pi}\Big[ \mathbb{E}\big[\ \|\ V_k - m_k^*(U_k)\, |^2 \big] \Big],
+          \end{equation}
+          and the federated approximation loss is
+          \begin{equation}
+              L_{\mathrm{approx}}(H,S;m) := \mathbb{E}_{k\sim\pi}\Big[ \mathbb{E}\big[\ \|\ m_k^*(U_k) - m(U_k)\ \|^2 \big] \Big].
+          \end{equation}
+
+          In particular, the total loss separates into the expected irreducible (client-wise Bayes) component and the expected approximation error of the global predictor relative to each client’s Bayes-optimal rule.
+          Please refer to the Extended Version for the proof.
+
+        \end{theorem}
+                
+      \end{block}
+
+      \begin{block}{Smallest Sufficient Horizon}
+
+        Now we define a key concept, the smallest sufficient horizon, which serves as the optimal look-back horizon that minimizes the forecasting loss.
+
+        Formaly, for any tolerance $\delta>0$, define the smallest sufficient horizon as
+        \begin{equation}
+            H_k^*(\delta) := \min\{H : |\Delta L_{\mathrm{Bayes}}^{(k)}(H)| \le \delta\},
+        \end{equation}
+        at which the Bayesian loss has effectively saturated: further historical context improves the irreducible loss by at most $\delta$. Together, these monotonicity properties imply a unimodal structure for the
+        total loss.
+        
+      \end{block}
+
+      \begin{block}{Unimodality and Optimal Horizon}
+          
+        If for a given $\delta>0$ the Bayesian loss satisfies $\Delta L_{\mathrm{Bayes}}^{(k)}(H) \le -\delta$ for all $H < H_k^*(\delta)$, and the approximation loss satisfies $\Delta L_{\mathrm{approx}}^{(k)}(H;m) \ge \delta$ for all $H \ge H_k^*(\delta)$, then the combined loss obeys that $L^{(k)}(H)$ decreases on $[1, H_k^*(\delta)]$, and $L^{(k)}(H)$ increases on $[H_k^*(\delta),\infty)$. 
+
+        Consequently, $H_k^*(\delta) \in \arg\min_{H\in\mathbb{N}} L^{(k)}(H)$ with uniqueness up to integer ties.
+
+
+        \begin{proof}
+
+        From the Bayesian loss analysis, increasing $H$ reduces seasonal/phase ambiguity and uncovers AR structure, but only up to a finite coverage horizon. Hence, there exists $H_0$ such that
+        \begin{equation}
+            \Delta L_{\mathrm{Bayes}}(H,S) < 0 \quad (H < H_0),
+        \end{equation}
+        while for any $\delta>0$ we can choose $H_0$ large enough so that
+        \begin{equation}
+            \Delta L_{\mathrm{Bayes}}(H,S) \ge -\delta \quad (H \ge H_0).
+        \end{equation}
+
+        For the approximation term, the curvature–variance bound on the intrinsic manifold shows that the error grows with both the intrinsic dimension $d_I(H)$ and the factor $H/D$ coming from the effective sample size per window ($\propto D/(HN)$). Since $d_I(H)$ is non-decreasing and eventually saturated, while $H/D$ grows linearly, there exists $\eta>0$, independent of $H$, such that
+        \begin{equation}
+            \Delta L_{\mathrm{approx}}(H,S) \ge \eta \quad (H \ge H_0).
+        \end{equation}
+
+        Fix any $\delta \in (0,\eta)$ and define $H^*(\delta)$ as the smallest $H \ge H_0$ with $\Delta L_{\mathrm{Bayes}}(H,S) \ge -\delta$. Then for $H < H^*(\delta)$, we have $\Delta L_{\mathrm{Bayes}}(H,S) < -\delta$ and $\Delta L_{\mathrm{approx}}(H,S) \ge 0$, so $ \Delta L(H,S) = \Delta L_{\mathrm{Bayes}}(H,S) + \Delta L_{\mathrm{approx}}(H,S) < -\delta < 0$, and $L(H,S)$ is strictly decreasing. For $H \ge H^*(\delta)$, we have $\Delta L_{\mathrm{Bayes}}(H,S) \ge -\delta$ and $\Delta L_{\mathrm{approx}}(H,S) \ge \eta$, hence $\Delta L(H,S) \ \ge \ -\delta + \eta \ > \ 0$, so $L(H,S)$ is strictly increasing.
+
+        Thus $L(H, S)$ decreases up to $H^*(\delta)$ and increases thereafter, so it is unimodal in $H$ and attains its unique minimum at $H^*(\delta)$ (up to trivial ties), as claimed.
+
+        \end{proof}
+
+        \noindent
+        Hence, before $H_k^*(\delta)$, the reduction in irreducible error outweighs the increase in approximation error; afterwards, the opposite holds. The total loss thus has a single optimal basin, and the smallest sufficient horizon attains the minimum.
 
       \end{block}
 
-      \begin{block}{Future Work}
-        This work could easily be extend to a wide range of crystal structures
-        using the relative orientations, a scaled distance, and angle to neighbours.
-        This extension requires finding the crystal structures of a number of 3D molecules
-        to generate the training data.\\
+      \begin{block}{Limitations and Discussion}
 
-        Further work would incorporate this functionality into a simple to use open source library
-        so that this can become a standard analysis tool for many types of crystals.
+        This work introduces a principled framework for federated time-series forecasting under non-IID data, built on a structured synthetic data generator (SDG) and an intrinsic representation space. The formulation enables a clean decomposition of forecasting error and yields a provably optimal look-back horizon.
 
-      % Hack to align bottoms of columns
-      \vspace{0.75em}
+        The SDG captures key components—trend, AR memory, and seasonality—but assumes Gaussian innovations, local stationarity, and stable AR structure, limiting its ability to represent regime shifts, nonlinear patterns, or strong feature interactions. Estimating global covariance also requires privacy-aware aggregation, and treating overlapping windows as independent may overstate sample size.
+
+        These assumptions, while standard in theory, are chosen to clearly isolate the effects of horizon length and heterogeneity, providing the first provable foundation for optimal horizon selection and a basis for future extensions. 
+        
+      \end{block}
+
+      \begin{block}{References}
+        \printbibliography
       \end{block}
 
     \end{column}
